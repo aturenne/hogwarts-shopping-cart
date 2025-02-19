@@ -141,8 +141,12 @@
       </div>
       <div class="order-summary">
         <h2>Order summary</h2>
-        <button class="toggle-details-button">Hide Details</button>
-        <div class="">
+        <button 
+          class="toggle-details-button"
+          @click="hideDetails = !hideDetails">
+          {{ hideDetails ? 'Show Details' : 'Hide Details' }}
+        </button>
+        <div :class="{ 'hide-order-details': hideDetails }">
           <div class="summary-item">
             <span>Subtotal</span>
             <span>$13900</span>
@@ -167,6 +171,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 let username = 'Harry'
 let shoppingCartItems = [
   {
@@ -211,6 +217,7 @@ let shoppingCartItems = [
   }
 ]
 
+let hideDetails = ref(false)
 </script>
 
 <style scoped>
