@@ -23,9 +23,8 @@
                 <input 
                   type="text" 
                   class="quantity-input" 
-                  :value="shoppingCartItems[0].quantity" 
+                  v-model.number="shoppingCartItems[0].quantity"
                   aria-label="quantity"
-                  @blur="changeQuantity(shoppingCartItems[0].id, $event)"
                 />
                 <button 
                   class="quantity-change-button" 
@@ -53,7 +52,7 @@
                 <input 
                   type="text" 
                   class="quantity-input" 
-                  :value="shoppingCartItems[1].quantity" 
+                  v-model.number="shoppingCartItems[1].quantity" 
                   aria-label="quantity"
                 />
                 <button class="quantity-change-button">+</button>
@@ -80,7 +79,7 @@
                 <input 
                   type="text" 
                   class="quantity-input" 
-                  :value="shoppingCartItems[2].quantity" 
+                  v-model.number="shoppingCartItems[2].quantity" 
                   aria-label="quantity"
                 />
                 <button class="quantity-change-button">+</button>
@@ -107,7 +106,7 @@
                 <input 
                   type="text" 
                   class="quantity-input" 
-                  :value="shoppingCartItems[3].quantity" 
+                  v-model.number="shoppingCartItems[3].quantity" 
                   aria-label="quantity"
                 />
                 <button class="quantity-change-button">+</button>
@@ -134,7 +133,7 @@
                 <input 
                   type="text" 
                   class="quantity-input" 
-                  :value="shoppingCartItems[4].quantity" 
+                  v-model.number="shoppingCartItems[4].quantity" 
                   aria-label="quantity"
                 />
                 <button class="quantity-change-button">+</button>
@@ -236,14 +235,6 @@ function increaseOne(id) {
   shoppingCartItems.value.some((item) => {
     if (item.id == id) {
       item.quantity = item.quantity + 1
-    }
-  })
-}
-
-function changeQuantity(id, event) {
-  shoppingCartItems.value.some(item =>{
-    if(item.id == id){
-      item.quantity = parseInt(event.target.value)  //value inside input box (different from ref value object) - string by default, parse to int
     }
   })
 }
